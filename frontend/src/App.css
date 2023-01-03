@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.nav-ul {
+  display: flex;
+  gap: 25px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid transparent;
+  padding: 25px 16px;
+  margin-bottom: 10px;
+  background-color: skyblue;
+}
+.nav-ul li {
+  list-style: none;
+  padding: 10px;
+}
+.nav-ul li:hover {
+  background-color: black;
+  transform: scale(1.1);
+}
+.nav-ul li a {
+  text-decoration: none;
+  font-size: larger;
+  color: black;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  letter-spacing: 0.2ch;
+}
+.nav-ul li a:hover {
+  color: white;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: skyblue;
+  text-align: center;
+  padding: 20px 10px;
+}
+.register {
+  border: 1px solid rgb(100, 250, 248);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 50px;
+  justify-content: center;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 40px;
+}
+.inputbox {
+  padding: 12px;
+  margin-top: 15px;
+}
+.inputbox::placeholder {
+  font-size: large;
+}
+.inputbox:focus {
+  outline: 1px solid rgb(3, 184, 255);
+}
+.registerbtn {
+  align-self: center;
+  padding: 14px 20px;
+  font-size: large;
+  cursor: pointer;
+  background-color: rgb(117, 216, 255);
+  letter-spacing: 2px;
+}

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Hamza804-latif/simple-mern-e-comm-dashboard/issues"
   },
-  "homepage": "https://github.com/Hamza804-latif/simple-mern-e-comm-dashboard#readme"
+  "homepage": "https://github.com/Hamza804-latif/simple-mern-e-comm-dashboard#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
