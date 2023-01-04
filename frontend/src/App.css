@@ -53,6 +53,7 @@
 .inputbox {
   padding: 12px;
   margin-top: 15px;
+  font-size: larger;
 }
 .inputbox::placeholder {
   font-size: large;
