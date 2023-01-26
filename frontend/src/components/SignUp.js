@@ -24,12 +24,13 @@ const SignUp = () => {
         },
       });
       result = await result.json();
+      console.log("result", result);
       if (result.auth) {
         localStorage.setItem("auth", JSON.stringify(result.auth));
         localStorage.setItem("user", JSON.stringify(result));
         navigate("/");
       } else {
-        alert("some thing went wrong");
+        alert(result.message);
       }
     } else {
       alert("please enter data");

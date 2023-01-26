@@ -10,23 +10,29 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.post("/register", (req, resp) => {
-  const user = new User(req.body);
-  user.save((err, result) => {
-    if (err) {
-      resp.send(err);
-    } else {
-      result = result.toObject();
-      delete result.password;
-      jwt.sign({ result }, jwtkey, { expiresIn: "1h" }, (err, token) => {
-        if (err) {
-          resp.send({ message: "some thing went wrong" });
-        } else {
-          resp.send({ user: result, auth: token });
-        }
-      });
-    }
-  });
+app.post("/register", async (req, resp) => {
+  const { email } = req.body;
+  let checkEmail = await User.findOne({ email });
+  if (checkEmail) {
+    return resp.status(401).send({ message: "Email already existed" });
+  } else {
+    const user = new User(req.body);
+    user.save((err, result) => {
+      if (err) {
+        resp.send(err);
+      } else {
+        result = result.toObject();
+        delete result.password;
+        jwt.sign({ result }, jwtkey, { expiresIn: "1h" }, (err, token) => {
+          if (err) {
+            resp.send({ message: "some thing went wrong" });
+          } else {
+            resp.send({ user: result, auth: token });
+          }
+        });
+      }
+    });
+  }
 });
 
 app.post("/login", async (req, resp) => {
@@ -84,7 +90,6 @@ app.get("/product/:id", VerifyToken, async (req, resp) => {
 });
 
 app.put("/update", VerifyToken, async (req, resp) => {
-  console.log(req);
   let result = await Product.updateOne(
     { _id: req.body._id },
     { $set: req.body }
